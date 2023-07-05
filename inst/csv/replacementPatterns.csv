@@ -1369,3 +1369,10 @@ iris,UPDATE STATISTICS @a;,TUNE TABLE @a;
 iris,"--HINT BUCKET(@a, @b)", -- haven't looked into this yet, skip it for now
 iris,"--HINT PARTITION(@a @b)", -- haven't looked into this yet, skip it for now
 iris,"--HINT DISTRIBUTE_ON_KEY(@key)", -- haven't looked into this yet, skip it for now
+iris,"DATEFROMPARTS(@year,@month,@day)","TO_DATE(TO_CHAR(@year,'FM0000')||'-'||TO_CHAR(@month,'FM00')||'-'||TO_CHAR(@day,'FM00'), 'YYYY-MM-DD')"
+iris,"DATETIMEFROMPARTS(@year,@month,@day,@hour,@minute,@second,@ms)","TO_DATE(TO_CHAR(@year,'FM0000')||'-'||TO_CHAR(@month,'FM00')||'-'||TO_CHAR(@day,'FM00')||' '||TO_CHAR(@hour,'FM00')||':'||TO_CHAR(@minute,'FM00')||':'||TO_CHAR(@second,'FM00'), 'YYYY-MM-DD HH24:MI:SS')"
+iris," DATEADD(mm, @a, @b) as "," TO_DATE(DATEADD(mm, @a, @b),'YYYY-MM-DD HH:MI:SS') as "
+iris," DATEADD(d, @a, @b) as "," TO_DATE(DATEADD(d, @a, @b),'YYYY-MM-DD HH:MI:SS') as "
+iris," DATEADD(yy, @a, @b) as "," TO_DATE(DATEADD(yy, @a, @b),'YYYY-MM-DD HH:MI:SS') as "
+iris,"CONCAT(@a, @b,","@a || CONCAT(@b,"
+iris,"CONCAT(@a,@b)",@a || @b

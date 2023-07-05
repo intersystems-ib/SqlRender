@@ -1376,3 +1376,4 @@ iris," DATEADD(d, @a, @b) as "," TO_DATE(DATEADD(d, @a, @b),'YYYY-MM-DD HH:MI:SS
 iris," DATEADD(yy, @a, @b) as "," TO_DATE(DATEADD(yy, @a, @b),'YYYY-MM-DD HH:MI:SS') as "
 iris,"CONCAT(@a, @b,","@a || CONCAT(@b,"
 iris,"CONCAT(@a,@b)",@a || @b
+iris,CREATE INDEX @index_name ON @table (@variable) WHERE @b;,CREATE INDEX @index_name ON @table (@variable);

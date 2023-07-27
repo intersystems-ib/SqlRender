@@ -1377,3 +1377,9 @@ iris," DATEADD(yy, @a, @b) as "," TO_DATE(DATEADD(yy, @a, @b),'YYYY-MM-DD HH:MI:
 iris,"CONCAT(@a, @b,","@a || CONCAT(@b,"
 iris,"CONCAT(@a,@b)",@a || @b
 iris,CREATE INDEX @index_name ON @table (@variable) WHERE @b;,CREATE INDEX @index_name ON @table (@variable);
+iris,AS MIN,AS "MIN"
+iris,AS MAX,AS "MAX"
+iris,AS COUNT,AS "COUNT"
+iris,STDEV(@a),STDDEV(@a)
+iris,STDEV_POP(@a),STDDEV_POP(@a)
+iris,STDEV_SAMP(@a),STDDEV_SAMP(@a)

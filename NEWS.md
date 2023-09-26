@@ -1,3 +1,31 @@
+SqlRender 1.16.0
+================
+
+Changes:
+
+1. Adding support for `ALTER TABLE ADD` for SQLite and PostgreSQL.
+
+2. The `render()`, `translate()`, and `translateSingleStatement()` functions now preserve attributes of the SQL object.
+
+3. Adding support for `IIF` for Synapse.
+
+4. Translating double quotes to backticks for BigQuery.
+
+Bugfixes:
+
+1. Fix translation of `drvd()` for Snowflake.
+
+2. Fix translation of 'a.b.c...d' pattern for Snowflake.
+
+
+SqlRender 1.15.2
+================
+
+Bugfixes:
+
+1. Fixing translation of `DATEADD()` for DuckDB when number to add is not an integer.
+
+
 SqlRender 1.15.1
 ================
 

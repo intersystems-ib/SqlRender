@@ -1392,3 +1392,4 @@ iris,STDEV(@a),STDDEV(@a)
 iris,STDEV_POP(@a),STDDEV_POP(@a)
 iris,STDEV_SAMP(@a),STDDEV_SAMP(@a)
 iris,.DOMAIN ,."DOMAIN" 
+iris,AS DOMAIN,AS "DOMAIN"

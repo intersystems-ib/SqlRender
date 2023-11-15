@@ -1,3 +1,10 @@
+SqlRender 1.16.1.1
+================
+Changes
+1. Adding .1 to the package name to make it easier to be identified
+
+2. Adding support for `AS DOMAIN` for IRIS. `Domain` is a reserved word in IRIS.
+
 SqlRender 1.16.1
 ================
 

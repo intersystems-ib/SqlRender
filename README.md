@@ -17,7 +17,7 @@ Features
 - Supports a simple markup syntax for making SQL parameterized, and renders parameterized SQL (containing the markup syntax) to executable SQL
 - The syntax supports defining default parameter values
 - The syntax supports if-then-else structures
-- Has functions for translating SQL from one dialect (Microsoft SQL Server) to other dialects (Oracle, PostgreSQL, Amazon RedShift, Impala, IBM Netezza, Google BigQuery, Microsoft PDW, Snowflake, Azure Synapse, Apache Spark and SQLite)
+- Has functions for translating SQL from one dialect (Microsoft SQL Server) to other dialects (Oracle, PostgreSQL, Amazon RedShift, Impala, IBM Netezza, Google BigQuery, Microsoft PDW, Snowflake, Azure Synapse, Apache Spark, SQLite and InterSystems IRIS)
 - Can be used as R package, Java library, or as stand-alone executable through a command-line interface
 
 Examples
@@ -63,19 +63,17 @@ It is highly recommended for best performance to use a version of R that is at l
 
 Installation
 =============
+## IRIS class import
+
+In IRIS, import the class located in iris/src/OMOP.Utils.ProcSQLUtils.xml. It does contain methods used for SQLRender
+
 ## R package
 
-In R, to install the latest stable version, install from CRAN:
-
-```r
-install.packages("SqlRender")
-```
-  
-To install the latest development version, install from GitHub:
+In R, to install the latest version (HEAD), install from GitHub:
 
 ```r
 install.packages("remotes")
-remotes::install_github("ohdsi/SqlRender", ref = "develop")
+remotes::install_github("intersystems-ib/SqlRender")
 ```
 
 Once installed, you can try out SqlRender in a Shiny app that comes with the package:

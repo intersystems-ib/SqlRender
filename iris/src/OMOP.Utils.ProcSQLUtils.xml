@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26" zv="IRIS for UNIX (Ubuntu Server LTS for x86-64 Containers) 2022.1.3 (Build 668U)" ts="2023-11-17 07:53:49">
+<Class name="OMOP.Utils.ProcSQLUtils">
+<TimeChanged>66795,28383.612096423</TimeChanged>
+<TimeCreated>66793,27691.845074413</TimeCreated>
+
+<Method name="AddTable">
+<Description>
+Creates a table if it does not exist. If it does exist, it won't do anything. For IRIS 2023+, there is a clausule "EXISTS" to avoid this
+Executing it in a IRIS Terminal:
+zw ##class(OMOP.Utils.ProcSQLUtils).AddTable("RESULTSEX.ACHILLES_RESULTS", "stratum_1 VARCHAR(50), stratum_2 VARCHAR(50) , count_value int , analysis_id int")
+
+Executing it as SQL:
+call OMOP_Utils.ProcSQLUtils_AddTable('RESULTSEX.ACHILLES_RESULTS', 'stratum_1 VARCHAR(50), stratum_2 VARCHAR(50) , count_value int , analysis_id int');
+</Description>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>tableName:%String(MAXLEN="255"),columns:%String(MAXLEN="")</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<SqlProc>1</SqlProc>
+<Implementation><![CDATA[
+    //Add the parenthesis if not there
+    if ($FIND(columns, "(") = 0)
+        set columns = "("_columns
+    if ($FIND(columns, ")") = 0)
+        set columns = columns_")"
+
+    set CleanTableName = ..CleanTableName(tableName)
+    do ..RunQuery("create table "_CleanTableName_columns)
+    return $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="RemoveTable">
+<Description>
+Removes a table if it does exists. If it does not exist, it won't do anything. For IRIS 2023+, there is a clausule "EXISTS" to avoid this
+Executing it in a IRIS Terminal:
+zw ##class(OMOP.Utils.ProcSQLUtils).RemoveTable("RESULTSEX.ACHILLES_RESULTS")
+
+Executing it as SQL:
+call OMOP_Utils.ProcSQLUtils_RemoveTable('RESULTSEX.ACHILLES_RESULTS');
+</Description>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>tableName:%String(MAXLEN="255")</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<SqlProc>1</SqlProc>
+<Implementation><![CDATA[
+    set CleanTableName = ..CleanTableName(tableName)
+    do ..RunQuery("drop table "_CleanTableName)
+    return $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="CleanTableName">
+<Description>
+Recieves a string, and ensures it's an acceptable table name</Description>
+<Internal>1</Internal>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>tableName:%String(MAXLEN="255")</FormalSpec>
+<ReturnType>%String</ReturnType>
+<ReturnTypeParams>MAXLEN="255"</ReturnTypeParams>
+<Implementation><![CDATA[
+    set getLastDotPosition = $LENGTH(tableName)-($find($REVERSE(tableName),"."))
+    set getPackageName =  $EXTRACT(tableName,0, getLastDotPosition)
+    set removeDotsOfPackage = ($LISTFROMSTRING(getPackageName,"."))
+    set getCorrectedPackageName = $LISTTOSTRING(removeDotsOfPackage,"_")
+    set getTableName = $EXTRACT(tableName,getLastDotPosition+1,)
+    return ((getCorrectedPackageName)_(getTableName))
+]]></Implementation>
+</Method>
+
+<Method name="RunQuery">
+<Description>
+Runs a query. No returning status on purpose, these queries cannot return error to avoid stopping OMOP scripts.</Description>
+<Internal>1</Internal>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>query:%String(MAXLEN="")</FormalSpec>
+<Implementation><![CDATA[
+    try{
+    	set tStatement = ##class(%SQL.Statement).%New()
+    	set qStatus = tStatement.%Prepare(query)
+    	do tStatement.%Execute()
+    } catch {
+        //Catch and ignore to avoid the sql call from throwing an error
+    }
+]]></Implementation>
+</Method>
+</Class>
+</Export>

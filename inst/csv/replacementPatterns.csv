@@ -1359,9 +1359,9 @@ iris,+ CAST(@a AS varchar),|| CAST(@a AS varchar)
 iris,COUNT_BIG(@a),COUNT(@a)
 iris,.dbo.,.
 iris,CREATE TABLE #@table (@definition),CREATE GLOBAL TEMPORARY TABLE @table (@definition)
-iris,"IF OBJECT_ID('@table', 'U') IS NULL CREATE TABLE @table (@definition);",CREATE TABLE IF NOT EXISTS @table (@definition);
-iris,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",DROP TABLE IF EXISTS @table;
-iris,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",DROP TABLE IF EXISTS #@table;
+iris,"IF OBJECT_ID('@table', 'U') IS NULL CREATE TABLE @table (@definition);",OMOP.Utils.ProcSQLUtils_AddTable(@table,@definition);
+iris,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",call OMOP.Utils.ProcSQLUtils_RemoveTable(@table);
+iris,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",call OMOP.Utils.ProcSQLUtils_RemoveTable(#@table);
 iris,PRIMARY KEY NONCLUSTERED,PRIMARY KEY
 iris,"AS drvd(@a)","AS drvd(<start>@a)"
 iris,"<start>@a, @b)","<start>@a, <start>@b)"
@@ -1393,3 +1393,5 @@ iris,STDEV_POP(@a),STDDEV_POP(@a)
 iris,STDEV_SAMP(@a),STDDEV_SAMP(@a)
 iris,.DOMAIN ,."DOMAIN" 
 iris,AS DOMAIN,AS "DOMAIN"
+iris,WITH @a AS @b SELECT @c INTO @d FROM @e;,SELECT @c INTO @d FROM @b AS @a;
+iris,WITH @a AS @b INSERT INTO @c SELECT @d;,INSERT INTO @c FROM @b AS @a;

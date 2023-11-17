@@ -1,3 +1,17 @@
+SqlRender 1.16.1.2
+================
+Changes
+1. Adding an IRIS class to manage clausules EXISTS in IRIS 2022 and older
+
+2. Adding support for clausules WITH for IRIS. 
+
+3. Adding support for patterns to create/drop tables if those tables does/does not exist.
+
+4. Modifying DESCRIPTION to change the standard installation from OHDSI GitHub for the InterSystems Iberia GitHub
+
+5. Adding IRIS as supported to the README file
+
+
 SqlRender 1.16.1.1
 ================
 Changes

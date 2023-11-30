@@ -1,3 +1,10 @@
+SqlRender 1.16.1.3
+================
+1. Uploading .jar to inst/java with the IRIS DB Support
+
+2. Adding instructions to generate .jar file
+
+
 SqlRender 1.16.1.2
 ================
 Changes

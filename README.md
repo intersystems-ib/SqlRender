@@ -84,40 +84,18 @@ launchSqlRenderDeveloper()
 ```
 
 ## Java library
-You can fetch the JAR file in the inst/java folder of this repository, or use Maven:
 
-1. First add the SqlRender repository so that maven can find and download the SqlRender artifact automatically:
-```xml
-<repository>
-  <id>ohdsi</id>
-  <name>repo.ohdsi.org</name>
-  <url>https://repo.ohdsi.org/nexus/content/repositories/releases</url>
-</repository>
-<repository>
-  <id>ohdsi.snapshots</id>
-  <name>repo.ohdsi.org-snapshots</name>
-  <url>https://repo.ohdsi.org/nexus/content/repositories/snapshots</url>
-  <releases>
-      <enabled>false</enabled>
-  </releases>
-  <snapshots>
-      <enabled>true</enabled>
-  </snapshots>
-</repository>
-```
-2: Include the SqlRender dependency in your pom.xml
-```xml
-<dependency>
-	<groupId>org.ohdsi.sql</groupId>
-	<artifactId>SqlRender</artifactId>
-	<version>1.9.2-SNAPSHOT</version>
-</dependency>
+In inst/java, you can find SqlRender-1.16.3-irisDB.jar with IRIS support from this repository.
+
+You can create it using maven with
+```r
+mvn clean package
 ```
 
 ## Command-line executable
 You can fetch the JAR file in the inst/java folder of this repository, or use Maven as described above. Run this from the command line to get a list of options:
 ```
-java -jar SqlRender.jar ?
+java -jar SqlRender-1.16.3-irisDB.jar ?
 ```
 
 User Documentation

@@ -1,3 +1,7 @@
+SqlRender 1.16.1.6
+================
+1. Added new pattern using WITH and CREATE
+
 SqlRender 1.16.1.5
 ================
 1. Again fixing procedure calls to IRIS in the replacement patterns file

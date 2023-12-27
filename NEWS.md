@@ -1,3 +1,7 @@
+SqlRender 1.16.1.7
+================
+1. Added new pattern using WITH and CREATE GLOBAL TEMPORARY
+
 SqlRender 1.16.1.6
 ================
 1. Added new pattern using WITH and CREATE

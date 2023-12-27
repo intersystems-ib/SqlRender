@@ -6,7 +6,7 @@
 	<groupId>org.ohdsi.sql</groupId>
 	<artifactId>SqlRender</artifactId>
 	<packaging>jar</packaging>
-	<version>1.16.4-irisDB</version>
+	<version>1.16.5-irisDB</version>
 	<name>SqlRender</name>
 	<scm>
 		<connection>scm:git:https://github.com/OHDSI/SqlRender</connection>

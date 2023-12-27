@@ -1360,8 +1360,8 @@ iris,COUNT_BIG(@a),COUNT(@a)
 iris,.dbo.,.
 iris,CREATE TABLE #@table (@definition),CREATE GLOBAL TEMPORARY TABLE @table (@definition)
 iris,"IF OBJECT_ID('@table', 'U') IS NULL CREATE TABLE @table (@definition);",OMOP_Utils.ProcSQLUtils_AddTable(@table,@definition);
-iris,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",call OMOP_Utils.ProcSQLUtils_RemoveTable(@table);
-iris,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",call OMOP_Utils.ProcSQLUtils_RemoveTable(#@table);
+iris,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",call OMOP_Utils.ProcSQLUtils_RemoveTable('@table');
+iris,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",call OMOP_Utils.ProcSQLUtils_RemoveTable('#@table');
 iris,PRIMARY KEY NONCLUSTERED,PRIMARY KEY
 iris,"AS drvd(@a)","AS drvd(<start>@a)"
 iris,"<start>@a, @b)","<start>@a, <start>@b)"
